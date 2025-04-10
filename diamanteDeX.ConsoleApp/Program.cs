@@ -19,7 +19,12 @@
 
                 int numeroUsuario = Convert.ToInt32(Console.ReadLine());
 
-                ExibirMensagemErro(numeroUsuario);
+                if (ExibirMensagemErro(numeroUsuario)==false)
+                {
+                    Console.WriteLine("\nPressione Enter tentar novamente:");
+                    Console.ReadLine();
+                    continue;
+                }
 
                 Console.WriteLine("\nPressione Enter para continuar...");
                 Console.WriteLine();
@@ -41,14 +46,15 @@
             Console.WriteLine("\nDigite um número inteiro para desenhar o diamante: ");
         }
 
-        static void ExibirMensagemErro(int numeroUsuario)
+        static bool ExibirMensagemErro(int numeroUsuario)
         {
 
             if (numeroUsuario < 3 || numeroUsuario % 2 == 0)
             {
-                Console.WriteLine("Número inválido! Digite um ímpar maior que 1");
-
+                Console.WriteLine("\nNúmero inválido! Digite um ímpar maior que 1");
+                return false;
             }
+            return true;
         }
 
         static void DesenharDiamanteCompleto(char caracterDoDesenho, int numeroUsuario)
