@@ -23,6 +23,7 @@
                 Console.WriteLine("\nPressione Enter para continuar...");
                 
                 DesenharCimaDiamante(numeroUsuario);
+                DesenharMeioDiamante(numeroUsuario);
 
                 Console.ReadLine();
             }
@@ -72,6 +73,17 @@
 
                 Console.WriteLine();
             }
+        }
+
+        static void DesenharMeioDiamante(int numeroUsuario)
+        {
+            string escreveX = "X";
+      
+            for (int i = 0; i < numeroUsuario; i++)
+            {
+                Console.Write(escreveX);
+            }
+            Console.WriteLine();
         }
     }
 }
