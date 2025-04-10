@@ -26,7 +26,9 @@
                 DesenharMeioDiamante(numeroUsuario);
                 DesenharBaixoDiamante(numeroUsuario);
 
-                Console.ReadLine();
+                Console.WriteLine();
+
+                DesenharNovamente();
             }
         }
 
@@ -95,21 +97,40 @@
             string escreveX = "X";
 
             for (int i = 0; i < (numeroUsuario - 1) / 2; i++)
+            {
+                for (int espacos = 0; espacos < qtdEspacos; espacos++)
                 {
-            for (int espacos = 0; espacos < qtdEspacos; espacos++)
-            {
-                Console.Write(escreveEspaco);
+                    Console.Write(escreveEspaco);
+                }
+
+                for (int x = 0; x < qtdDeX; x++)
+                {
+                    Console.Write(escreveX);
+                }
+
+                qtdDeX -= 2;
+                qtdEspacos++;
+
+                Console.WriteLine();
             }
+        }
 
-            for (int x = 0; x < qtdDeX; x++)
+        static bool DesenharNovamente()
+        {
+            while (true)
             {
-                Console.Write(escreveX);
-            }
+                Console.Write("\nDeseja desenhar novamente? [S/N]: ");
+                string jogarNovamente = Console.ReadLine().ToUpper();
 
-            qtdDeX -= 2;
-            qtdEspacos++;
-
-            Console.WriteLine();
+                if (jogarNovamente == "S")
+                {
+                    Console.Clear();
+                    return true;
+                }
+                else if (jogarNovamente == "N")
+                {
+                    return false;
+                }
             }
         }
     }
