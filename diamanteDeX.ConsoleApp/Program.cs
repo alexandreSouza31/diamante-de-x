@@ -21,13 +21,11 @@
 
                 if (ExibirMensagemErro(numeroUsuario)==false)
                 {
-                    Console.WriteLine("\nPressione Enter tentar novamente:");
-                    Console.ReadLine();
+                    DigitarEnterEContinuar();
                     continue;
                 }
 
-                Console.WriteLine("\nPressione Enter para continuar...");
-                Console.WriteLine();
+                DigitarEnterEContinuar();
 
                 DesenharDiamanteCompleto(caracterDoDesenho, numeroUsuario);
 
@@ -129,6 +127,13 @@
                     return false;
                 }
             }
+        }
+
+        static void DigitarEnterEContinuar()
+        {
+            Console.WriteLine("\nPressione Enter para continuar...");
+            Console.ReadLine();
+            Console.WriteLine();
         }
     }
 }
