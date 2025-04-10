@@ -30,7 +30,8 @@
 
                 Console.WriteLine();
 
-                DesenharNovamente();
+                bool novoDesenho = DesenharNovamente();
+                if (novoDesenho == false) break;
             }
         }
 
