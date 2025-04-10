@@ -24,9 +24,7 @@
                 Console.WriteLine("\nPressione Enter para continuar...");
                 Console.WriteLine();
 
-                DesenharCimaDiamante(caracterDoDesenho,numeroUsuario);
-                DesenharMeioDiamante(caracterDoDesenho,numeroUsuario);
-                DesenharBaixoDiamante(caracterDoDesenho,numeroUsuario);
+                DesenharDiamanteCompleto(caracterDoDesenho, numeroUsuario);
 
                 Console.WriteLine();
 
@@ -53,6 +51,13 @@
             }
         }
 
+        static void DesenharDiamanteCompleto(char caracterDoDesenho, int numeroUsuario)
+        {
+            DesenharCimaDiamante(caracterDoDesenho, numeroUsuario);
+            DesenharMeioDiamante(caracterDoDesenho, numeroUsuario);
+            DesenharBaixoDiamante(caracterDoDesenho, numeroUsuario);
+        }
+
         static void DesenharCimaDiamante(char caracterDoDesenho,int numeroUsuario)
         {
             int qtdEspacos = (numeroUsuario - 1) / 2;
@@ -60,30 +65,11 @@
             int qtdDeX = 1;
 
             string escreveEspaco = " ";
-
-            for(int i = 0; i < qtdlinhas; i++)
-            {
-                for (int espacos=0;espacos<qtdEspacos;espacos++)
-                {
-                    Console.Write(escreveEspaco);
-                }
-
-                for (int x=0;x<qtdDeX;x++)
-                {
-                    Console.Write(caracterDoDesenho);
-                }
-
-                qtdDeX += 2;
-                qtdEspacos--;
-
-                Console.WriteLine();
-            }
+            BaseDesenhoDiamante(numeroUsuario, qtdEspacos, qtdDeX, +2, -1, caracterDoDesenho, escreveEspaco, qtdlinhas);
         }
 
         static void DesenharMeioDiamante(char caracterDoDesenho, int numeroUsuario)
-        {
-            //string escreveX = "X";
-      
+        {      
             for (int i = 0; i < numeroUsuario; i++)
             {
                 Console.Write(caracterDoDesenho);
@@ -96,9 +82,12 @@
             int qtdDeX = numeroUsuario - 2;
 
             string escreveEspaco = " ";
-            //string escreveX = "X";
+            BaseDesenhoDiamante(numeroUsuario, 1, numeroUsuario - 2, -2, +1, caracterDoDesenho, escreveEspaco, (numeroUsuario - 1) / 2);
+        }
 
-            for (int i = 0; i < (numeroUsuario - 1) / 2; i++)
+        static void BaseDesenhoDiamante(int numeroUsuario, int qtdEspacos, int qtdDeX, int aumentaOuDiminuiX, int aumentaOuDiminuiEspaco, char caracterDoDesenho, string escreveEspaco , int qtdlinhas)
+        {
+            for (int i = 0; i < qtdlinhas; i++)
             {
                 for (int espacos = 0; espacos < qtdEspacos; espacos++)
                 {
@@ -110,8 +99,8 @@
                     Console.Write(caracterDoDesenho);
                 }
 
-                qtdDeX -= 2;
-                qtdEspacos++;
+                qtdDeX += aumentaOuDiminuiX;
+                qtdEspacos += aumentaOuDiminuiEspaco;
 
                 Console.WriteLine();
             }
