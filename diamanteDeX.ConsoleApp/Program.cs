@@ -14,17 +14,19 @@
         {           
             while (true)
             {
-                ExibirCabecalho();
+                char caracterDoDesenho = 'X';
+                ExibirCabecalho(caracterDoDesenho);
 
                 int numeroUsuario = Convert.ToInt32(Console.ReadLine());
 
                 ExibirMensagemErro(numeroUsuario);
 
                 Console.WriteLine("\nPressione Enter para continuar...");
-                
-                DesenharCimaDiamante(numeroUsuario);
-                DesenharMeioDiamante(numeroUsuario);
-                DesenharBaixoDiamante(numeroUsuario);
+                Console.WriteLine();
+
+                DesenharCimaDiamante(caracterDoDesenho,numeroUsuario);
+                DesenharMeioDiamante(caracterDoDesenho,numeroUsuario);
+                DesenharBaixoDiamante(caracterDoDesenho,numeroUsuario);
 
                 Console.WriteLine();
 
@@ -32,10 +34,10 @@
             }
         }
 
-        static void ExibirCabecalho()
+        static void ExibirCabecalho(char caracterDoDesenho)
         {
             Console.Clear();
-            Console.WriteLine("---------------- Diamante com X ----------------");
+            Console.WriteLine($"---------------- Diamante com {caracterDoDesenho} ----------------");
             Console.WriteLine("\n------------------------------------------------");
             Console.WriteLine("\nDigite um número inteiro para desenhar o diamante: ");
         }
@@ -50,14 +52,13 @@
             }
         }
 
-        static void DesenharCimaDiamante(int numeroUsuario)
+        static void DesenharCimaDiamante(char caracterDoDesenho,int numeroUsuario)
         {
             int qtdEspacos = (numeroUsuario - 1) / 2;
             int qtdlinhas = qtdEspacos;
             int qtdDeX = 1;
 
             string escreveEspaco = " ";
-            string escreveX = "X";
 
             for(int i = 0; i < qtdlinhas; i++)
             {
@@ -68,7 +69,7 @@
 
                 for (int x=0;x<qtdDeX;x++)
                 {
-                    Console.Write(escreveX);
+                    Console.Write(caracterDoDesenho);
                 }
 
                 qtdDeX += 2;
@@ -78,23 +79,23 @@
             }
         }
 
-        static void DesenharMeioDiamante(int numeroUsuario)
+        static void DesenharMeioDiamante(char caracterDoDesenho, int numeroUsuario)
         {
-            string escreveX = "X";
+            //string escreveX = "X";
       
             for (int i = 0; i < numeroUsuario; i++)
             {
-                Console.Write(escreveX);
+                Console.Write(caracterDoDesenho);
             }
             Console.WriteLine();
         }
-        static void DesenharBaixoDiamante(int numeroUsuario)
+        static void DesenharBaixoDiamante(char caracterDoDesenho, int numeroUsuario)
         {
             int qtdEspacos = 1;
             int qtdDeX = numeroUsuario - 2;
 
             string escreveEspaco = " ";
-            string escreveX = "X";
+            //string escreveX = "X";
 
             for (int i = 0; i < (numeroUsuario - 1) / 2; i++)
             {
@@ -105,7 +106,7 @@
 
                 for (int x = 0; x < qtdDeX; x++)
                 {
-                    Console.Write(escreveX);
+                    Console.Write(caracterDoDesenho);
                 }
 
                 qtdDeX -= 2;
